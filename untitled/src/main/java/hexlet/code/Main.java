@@ -4,16 +4,14 @@ import io.javalin.Javalin;
 
 public final class Main {
 
-    public static Javalin getApp() {
-        Javalin app = Javalin.create(config -> {
-            config.bundledPlugins.enableDevLogging();});
-        app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!"));
-        return app;
-    }
-
     public static void main(String[] args) {
-        Javalin app = getApp();
+        var app = Javalin.create(config -> {
+            config.bundledPlugins.enableDevLogging();
+        });
+        app.get("/users", ctx -> ctx.result("GET /users"));
+        app.post("/users", ctx -> ctx.result("POST /users"));
         app.start(7070);
     }
 }
+
 
